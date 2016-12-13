@@ -1,5 +1,3 @@
-package ListLab;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,13 +22,22 @@ public class Driver {
 		
 		//Determine which data structure is fastest for each
 		//operation. Complete the action
-		
-		//Delete the first, if any, Student with the last name of "Smith"
-		
+
+        //Delete the first, if any, Student with the last name of "Smith"
+		for(int i=0;i<studentArrayList.size();i++) {
+            if(studentArrayList.get(i).getLastName().equalsIgnoreCase("smith")) {
+                studentLinkedList.remove(i);
+                break;
+            }
+        }
 		//Change the name of the 3rd entry to "Joe Montana"
-		
+		studentArrayList.get(2).setFirstName("Joe");
+        studentArrayList.get(2).setLastName("Montana");
 		//Remove the 10th element
-	}
+        System.out.println(studentLinkedList.get(9).getFirstName());
+        studentLinkedList.remove(9);
+        System.out.println(studentLinkedList.get(9).getFirstName());
+    }
 	
 	//To generate the ArrayList
 	private static void generateStudents(int numberOfStudents, List<Student> outList) {

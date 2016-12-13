@@ -1,8 +1,5 @@
-package ListLab;
 
-import java.util.Iterator;
-
-public class MyLinkedList<T> implements Iterable<T>{
+public class MyLinkedList<T>{
 
 	private Node<T> head;
 	private int size = 0;
@@ -12,51 +9,96 @@ public class MyLinkedList<T> implements Iterable<T>{
 	}
 
 	public boolean remove(int index) {
-		//to-do
+        if(index < 0 || index > size) {
+            return false;
+        }
+        Node<T> current = head;
+
+        if(head != null) {
+            while(index > 0) {
+                if(current.getNext() == null) {
+                    return false;
+                }
+                current = current.getNext();
+                index--;
+            }
+            current.setNext(current.getNext().getNext());
+            size--;
+            return true;
+        }
+        return false;
 	}
 
 	public T get(int index) {
-		//to-do
+        if(index < 0 || index > size) {
+            return null;
+        }
+
+        Node<T> current = head;
+
+        if(head != null) {
+            current = current.getNext();
+            for(int i=0;i<index;i++) {
+                if(current.getNext() == null) {
+                    return null;
+                }
+                current = current.getNext();
+            }
+            return current.getData();
+        }
+        return null;
 	}
 
 	public void add(T obj) {
-		//to-do
+		if(head == null) {
+            head = new Node<>(obj);
+        }
+
+        Node<T> added = new Node<>(obj);
+        Node<T> current = head;
+
+        if(current != null) {
+            while(current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(added);
+        }
+        size++;
 	}
 
 	//The methods below are bonus
 
-	public void add(int index, T obj){
-		//to-do
-	}
+//	public void add(int index, T obj){
+//
+//	}
 
-	@Override
-	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return new MyIterator<T>(head);
-	}
-
-	private class MyIterator<T> implements Iterator<T> {
-
-		private Node<T> node;
-
-		public MyIterator(Node<T> node) {
-			//to-do
-		}
-		@Override
-		public boolean hasNext() {
-			//to-do
-		}
-
-		@Override
-		public T next() {
-			//to-do
-		}
-
-		@Override
-		public void remove() {
-			// to-do
-
-		}
-
-	}
+//	@Override
+//	public Iterator<T> iterator() {
+//		// TODO Auto-generated method stub
+//		return new MyIterator<T>(head);
+//	}
+//
+//	private class MyIterator<T> implements Iterator<T> {
+//
+//		private Node<T> node;
+//
+//		public MyIterator(Node<T> node) {
+//			//to-do
+//		}
+//		@Override
+//		public boolean hasNext() {
+//			//to-do
+//		}
+//
+//		@Override
+//		public T next() {
+//			//to-do
+//		}
+//
+//		@Override
+//		public void remove() {
+//
+//		}
+//
+//	}
 }
