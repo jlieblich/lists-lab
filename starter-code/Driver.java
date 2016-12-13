@@ -34,9 +34,13 @@ public class Driver {
 		studentArrayList.get(2).setFirstName("Joe");
         studentArrayList.get(2).setLastName("Montana");
 		//Remove the 10th element
-        System.out.println(studentLinkedList.get(9).getFirstName());
         studentLinkedList.remove(9);
-        System.out.println(studentLinkedList.get(9).getFirstName());
+
+        System.out.println(studentLinkedList.get(0).getFirstName());
+        System.out.println(studentLinkedList.get(17).getFirstName());
+        studentLinkedList.reverseList();
+        System.out.println(studentLinkedList.get(0).getFirstName());
+        System.out.println(studentLinkedList.get(17).getFirstName());
     }
 	
 	//To generate the ArrayList

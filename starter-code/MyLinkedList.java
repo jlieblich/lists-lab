@@ -66,6 +66,21 @@ public class MyLinkedList<T>{
         size++;
 	}
 
+	public void reverseList() {
+        Node<T> node = head;
+        Node<T> last = null;
+        Node<T> current = node;
+        Node<T> next;
+        while(current != null) {
+            next = current.getNext();
+            current.next = last;
+            last = current;
+            current = next;
+        }
+        node = last;
+        head = node;
+    }
+
 	//The methods below are bonus
 
 //	public void add(int index, T obj){
